@@ -14,7 +14,7 @@ library(tarchetypes)
 library(targets)
 library(tidyr)
 library(patchwork)
-library(qs)
+library(qs2)
 plan(multisession)
 options(
   SBC.min_chunk_size = 5,

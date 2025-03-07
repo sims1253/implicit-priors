@@ -103,7 +103,7 @@ utils.make_data = \(condition) {
           id, "_n", num_obs, "_", names(priors),
           ".ifs", num_precon, "_batch", batch, ".data")
       )
-      qsave(d, filepath)
+      qd_save(d, filepath)
       filepath
   })
   condition %>% mutate(data = filepath)
@@ -157,14 +157,14 @@ utils.compute_gdsem = function(condition, ...) {
       stanvars = bdlvm_stanvars,
       chains = 4, thin = 1, warmup = 1000, iter = 2000
     )
-    data = qread(data[[1]])
+    data = qd_read(data[[1]])
     SBC::compute_SBC(data, backend, ...)
   })
 }
 
 utils.compute_poldem = function(condition, ...) {
   with(condition, {
-    data = qread(data[[1]])
+    data = qd_read(data[[1]])
     fits = list()
     stats = list()
     for(i in seq_along(data$generated)) {
