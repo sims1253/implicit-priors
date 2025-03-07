@@ -1,0 +1,2 @@
+main:
+  script: case_2/_targets.R
