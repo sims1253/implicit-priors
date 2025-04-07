@@ -95,7 +95,8 @@ tar_plan(
       filter(
         num_precon %in% c(0, 6, 10),
         param_type %in%
-          c("Factor slopes", "Item std. dev.")) %>%
+          c("Factor slopes", "Item std. dev."),
+        max_rank == max(max_rank, na.rm = TRUE)) %>%
       utils.sbc_ecdf()
     p2 = utils.rhatplot(full_backtable, "plasma")
     p3 = utils.scholzplot(full_statstable)
